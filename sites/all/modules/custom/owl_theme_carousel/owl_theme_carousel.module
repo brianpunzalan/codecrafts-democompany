@@ -1,0 +1,19 @@
+<?php
+
+function owl_theme_carousel_css_alter(&$css){
+
+  //$css['sites/all/modules/custom/owl_theme_carousel/css/owl.carousel.css'] = drupal_get_path('module','custom/owl_theme_carousel/css/owl.carousel.css');
+  //$css['sites/all/modules/custom/owl_theme_carousel/css/owl.theme.css'] = drupal_get_path('module','custom/owl_theme_carousel/css/owl.theme.css');
+  //$css['sites/all/modules/custom/owl_theme_carousel/css/owl.transitions.css'] = drupal_get_path('module','custom/owl_theme_carousel/css/owl.transitions.css');
+
+
+}
+
+function owl_theme_carousel_js_alter(&$javascript){
+
+  //$javascript['sites/all/modules/custom/owl_theme_carousel/css/owl.carousel.js'] = drupal_get_path('module','custom/owl_theme_carousel/js/owl.carousel.js');
+
+}
+
+
+?>

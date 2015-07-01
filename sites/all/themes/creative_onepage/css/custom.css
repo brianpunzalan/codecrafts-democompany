@@ -1,0 +1,36 @@
+.login-panel{
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border: 0px solid #000000;
+  -webkit-box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.74);
+  -moz-box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.74);
+  box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.74);
+  
+  width: 50%;
+  padding: 110px;
+  position:relative;
+  margin-top: 100px;
+}
+.login-page{
+  background: rgba(237,237,237,1);
+background: -moz-linear-gradient(left, rgba(237,237,237,1) 0%, rgba(245,240,245,1) 51%, rgba(237,237,237,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(237,237,237,1)), color-stop(51%, rgba(245,240,245,1)), color-stop(100%, rgba(237,237,237,1)));
+background: -webkit-linear-gradient(left, rgba(237,237,237,1) 0%, rgba(245,240,245,1) 51%, rgba(237,237,237,1) 100%);
+background: -o-linear-gradient(left, rgba(237,237,237,1) 0%, rgba(245,240,245,1) 51%, rgba(237,237,237,1) 100%);
+background: -ms-linear-gradient(left, rgba(237,237,237,1) 0%, rgba(245,240,245,1) 51%, rgba(237,237,237,1) 100%);
+background: linear-gradient(to right, rgba(237,237,237,1) 0%, rgba(245,240,245,1) 51%, rgba(237,237,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ededed', GradientType=1 );
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.login-panel-container{
+  position:relative;
+  text-align: center;
+}
+
+.login-panel .btn{
+  width:100%;
+  background-color: #f05f40;
+}

@@ -1,0 +1,5 @@
+name		= Custom Sections
+description	= Custom Section blocks for Company
+package		= Custom
+version		= 7.1
+core		= 7.x

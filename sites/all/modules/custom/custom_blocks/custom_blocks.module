@@ -1,0 +1,593 @@
+<?php   
+
+  global $portfolio;
+  global $conf;
+
+  $portfolio = array(
+    'text' => array(
+      'portfolio_text_1',
+      'portfolio_text_2',
+      'portfolio_text_3',
+      'portfolio_text_4',
+      'portfolio_text_5',
+      'portfolio_text_6',   
+    ),
+    'image_fid' => array(
+      'portfolio_image_1_fid',
+      'portfolio_image_2_fid',
+      'portfolio_image_3_fid',
+      'portfolio_image_4_fid',
+      'portfolio_image_5_fid',
+      'portfolio_image_6_fid',   
+    ),
+    'image' => array(
+      'portfolio_image_1',
+      'portfolio_image_2',
+      'portfolio_image_3',
+      'portfolio_image_4',
+      'portfolio_image_5',
+      'portfolio_image_6',   
+    ),
+
+  );
+/*  
+  unset($conf['portfolio_image_1_fid']);
+  unset($conf['portfolio_image_2_fid']);
+  unset($conf['portfolio_image_3_fid']);
+  unset($conf['portfolio_image_4_fid']);
+  unset($conf['portfolio_image_5_fid']);
+  unset($conf['portfolio_image_6_fid']);
+  unset($conf['portfolio_text_1']);
+  unset($conf['portfolio_text_2']);
+  unset($conf['portfolio_text_3']);
+  unset($conf['portfolio_text_4']);
+  unset($conf['portfolio_text_5']);
+  unset($conf['portfolio_text_6']);
+*/  
+  //dpm($conf);
+  //dpm($portfolio['image']);
+     
+function custom_blocks_block_info(){
+  
+  $blocks = array();  
+
+  $blocks['about_us'] = array(
+    "info" => t("about us"),
+    "status" => 1,
+  );
+  
+  $blocks['services'] = array(
+    "info" => t("services"),
+    "status" => 1,
+  );
+
+  $blocks['sponsors'] = array(
+    "info" => t("sponsors"),
+    "status" => 1,
+  );
+
+  $blocks['portfolio'] = array(
+    "info" => t("portfolio"),
+    "status" => 1,
+  );
+
+  $blocks['contact_us'] = array(
+    "info" => t("contact us"),
+    "status" => 1,
+  );
+ 
+  //dpm($blocks);
+  return $blocks;
+   
+}
+
+function custom_blocks_block_configure($delta=''){
+  $form = array();
+  
+  global $portfolio;
+
+  switch($delta){
+    case 'about_us':
+	// text field form element
+      $form['text_body'] = array(
+        '#type' => 'text_format',
+        '#title' => t('Enter your text about the company in WYSIWYG format'),
+        '#default_value' => variable_get('text_variable', ''),
+      );
+      /*
+        // file uploader form element
+      $form['file'] = array(
+        '#name' => 'block_image',
+        '#type' => 'managed_file',
+	'#title' => t('Choose an Image File'),
+	'#description' => t('Select an Image for the custom block'),
+	'#default_value' => variable_get('block_image_fid', ''),
+	'#upload_location' => 'public://files/images/',
+	'#upload_validators' => array(
+	  'file_validate_extensions' => array('gif png jpg jpeg'),
+	),
+      );
+      */
+      
+      break;
+    
+    case 'portfolio':
+      // For portfolio #1
+      $form['portfolio_text_1'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Enter your text portfolio'),
+        '#default_value' => variable_get('portfolio_text_1','Category 1'),
+        '#required' => TRUE,
+      );
+      $form['portfolio_image_1'] = array(
+        '#type' => 'managed_file',
+        '#name' => 'image1',
+        '#title' => t('Choose an Image File #1'),
+        '#description' => t('Select an appropriate image for the above portfolio'),
+        '#default_value' => variable_get('portfolio_image_1_fid',''),
+        '#upload_location' => 'public://files/images/',
+       // '#required' => TRUE,
+        '#upload_validators' => array(
+          'file_validate_extensions' => array('gif png jpg jpeg'),
+        ),
+      );
+     
+       // For portfolio #2
+      $form['portfolio_text_2'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Enter your text portfolio'),
+        '#default_value' => variable_get('portfolio_text_2','Category 2'),
+        '#required' => TRUE,
+       );
+      $form['portfolio_image_2'] = array(
+        '#type' => 'managed_file',
+        '#name' => 'image2',
+        '#title' => t('Choose an Image File #2'),
+        '#description' => t('Select an appropriate image for the above portfolio'),
+        '#default_value' => variable_get('portfolio_image_2_fid',''),
+        '#upload_location' => 'public://files/images/',
+        //'#required' => TRUE,
+        '#upload_validators' => array(
+          'file_validate_extensions' => array('gif png jpg jpeg'),
+        ),
+      );
+ 
+      
+       // For portfolio #3
+      $form['portfolio_text_3'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Enter your text portfolio'),
+        '#default_value' => variable_get('portfolio_text_3','Category 3'),
+        '#required' => TRUE,
+      );
+      $form['portfolio_image_3'] = array(
+        '#type' => 'managed_file',
+        '#name' => 'image3',
+        '#title' => t('Choose an Image File #3'),
+        '#description' => t('Select an appropriate image for the above portfolio'),
+        '#default_value' => variable_get('portfolio_image_3_fid',''),
+        '#upload_location' => 'public://files/images/',
+        //'#required' => TRUE,
+        '#upload_validators' => array(
+          'file_validate_extensions' => array('gif png jpg jpeg'),
+        ),
+      );
+
+       // For portfolio #4
+      $form['portfolio_text_4'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Enter your text portfolio'),
+        '#default_value' => variable_get('portfolio_text_4','Category 4'),
+        '#required' => TRUE,
+      );
+      $form['portfolio_image_4'] = array(
+        '#type' => 'managed_file',
+        '#name' => 'image4',
+        '#title' => t('Choose an Image File #4'),
+        '#description' => t('Select an appropriate image for the above portfolio'),
+        '#default_value' => variable_get('portfolio_image_4_fid',''),
+        '#upload_location' => 'public://files/images/',
+        //'#required' => TRUE,
+        '#upload_validators' => array(
+          'file_validate_extensions' => array('gif png jpg jpeg'),
+        ),
+      );
+
+       // For portfolio #5
+      $form['portfolio_text_5'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Enter your text portfolio'),
+        '#default_value' => variable_get('portfolio_text_5','Category 5'),
+        '#required' => TRUE,
+      );
+      $form['portfolio_image_5'] = array(
+        '#type' => 'managed_file',
+        '#name' => 'image5',
+        '#title' => t('Choose an Image File #5'),
+        '#description' => t('Select an appropriate image for the above portfolio'),
+        '#default_value' => variable_get('portfolio_image_5_fid',''),
+        '#upload_location' => 'public://files/images/',
+        //'#required' => TRUE,
+        '#upload_validators' => array(
+          'file_validate_extensions' => array('gif png jpg jpeg'),
+        ),
+      );
+    
+       // For portfolio #6
+      $form['portfolio_text_6'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Enter your text portfolio'),
+        '#default_value' => variable_get('portfolio_text_6','Category 6'),
+        '#required' => TRUE,
+      );
+      $form['portfolio_image_6'] = array(
+        '#type' => 'managed_file',
+        '#name' => 'image6',
+        '#title' => t('Choose an Image File #6'),
+        '#description' => t('Select an appropriate image for the above portfolio'),
+        '#default_value' => variable_get('portfolio_image_6_fid',''),
+        '#upload_location' => 'public://files/images/',
+        //'#required' => TRUE,
+        '#upload_validators' => array(
+          'file_validate_extensions' => array('gif png jpg jpeg'),
+        ),
+      );
+  
+      break;  
+    
+    case 'services':
+      $form['services_title_1'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Enter your title service #1'),
+        '#default_value' => variable_get('services_title_1','Service 1'),
+        '#required' => TRUE,
+	'#size' => 16,
+      );
+      $form['services_icon_1'] = array(
+        '#type' => 'textfield',
+        '#title' => t('CSS class of the fontawesome icon #1'),
+        '#description' => t('Type in the class name of the desired fontawesome icon'),
+        '#default_value' => variable_get('services_icon_1',''),
+        '#required' => TRUE,
+	'#size' => 62,
+      );
+      $form['services_desc_1'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Description for service #1'),
+        '#description' => t('Description for your service'),
+        '#default_value' => variable_get('services_desc_1','Lorem Ipsum'),
+        '#required' => TRUE,
+	'#size' => 128,
+      );
+    
+
+      $form['services_title_2'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Enter your title service #2'),
+        '#default_value' => variable_get('services_title_2','Service 2'),
+        '#required' => TRUE,
+	'#size' => 16,
+      );
+      $form['services_icon_2'] = array(
+        '#type' => 'textfield',
+        '#title' => t('CSS class of the fontawesome icon #2'),
+        '#description' => t('Type in the class name of the desired fontawesome icon'),
+        '#default_value' => variable_get('services_icon_2',''),
+        '#required' => TRUE,
+	'#size' => 62,
+      );
+      $form['services_desc_2'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Description for service #2'),
+        '#description' => t('Description for your service'),
+        '#default_value' => variable_get('services_desc_2','Lorem Ipsum'),
+        '#required' => TRUE,
+	'#size' => 128,
+      );
+
+      
+      $form['services_title_3'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Enter your title service #3'),
+        '#default_value' => variable_get('services_title_3','Service 3'),
+        '#required' => TRUE,
+	'#size' => 16,
+      );
+      $form['services_icon_3'] = array(
+        '#type' => 'textfield',
+        '#title' => t('CSS class of the fontawesome icon #3'),
+        '#description' => t('Type in the class name of the desired fontawesome icon'),
+        '#default_value' => variable_get('services_icon_3',''),
+        '#required' => TRUE,
+	'#size' => 62,
+      );
+      $form['services_desc_3'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Description for service #3'),
+        '#description' => t('Description for your service'),
+        '#default_value' => variable_get('services_desc_3','Lorem Ipsum'),
+        '#required' => TRUE,
+	'#size' => 128,
+      );
+
+      $form['services_title_4'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Enter your title service #4'),
+        '#default_value' => variable_get('services_title_4','Service 4'),
+        '#required' => TRUE,
+	'#size' => 16,
+      );
+      $form['services_icon_4'] = array(
+        '#type' => 'textfield',
+        '#title' => t('CSS class of the fontawesome icon #4'),
+        '#description' => t('Type in the class name of the desired fontawesome icon'),
+        '#default_value' => variable_get('services_icon_4',''),
+        '#required' => TRUE,
+	'#size' => 62,
+      );
+      $form['services_desc_4'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Description for service #4'),
+        '#description' => t('Description for your service'),
+        '#default_value' => variable_get('services_desc_4','Lorem Ipsum'),
+        '#required' => TRUE,
+	'#size' => 128,
+      );
+    /*           
+    case 'sponsors':
+      $form['']
+    */
+    case 'contact_us':
+      $form['contact_us_heading'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Header text'),
+        '#default_value' => variable_get('contact_us_heading','Let\'s get in touch!'),
+        '#required' => TRUE,
+      );  
+      $form['contact_us_message'] = array(
+        '#type' => 'textarea',
+        '#title' => t('message text'),
+        '#default_value' => variable_get('contact_us_message', ''),
+      );
+      $form['contact_us_number'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Number text'),
+        '#default_value' => variable_get('contact_us_number',''),
+        '#required' => TRUE,
+      );
+      $form['contact_us_email'] = array(
+	'#type' => 'textfield',
+	'#title' => t('Email text'),
+        '#default_value' => variable_get('contact_us_email',''),
+        '#required' => TRUE,
+      );   
+
+      break;
+  }
+
+  global $conf;  
+  //dpm($form);
+  //dpm($conf);
+  return $form;
+}
+
+function get_variables($condition){
+  
+  $values = array();
+  global $portfolio;
+  
+  if($condition == 'text'){
+    foreach($portfolio['text'] as $value)
+      $values[] = variable_get($value,'');    
+  }
+  else if($condition == 'image'){
+    foreach($portfolio['image_fid'] as $value){
+      $file = file_load(variable_get($value,''));
+      $image_path = '';
+      if(isset($file->uri)){
+        $image_path = $file->uri;
+      }
+      $image_path = str_replace('public://','/sites/default/files/',$image_path);
+      $values[] = $image_path;
+    }
+  }
+  //dpm($values);
+  return $values;
+  
+}
+
+
+function custom_blocks_block_view($delta){
+  global $portfolio;
+  $block = array(); 
+  $values = array();
+    
+  //dpm($portfolio);
+  //foreach($portfolio['text'] as $value)
+  //  $values[] = $value;
+  //dpm($values);
+  //dpm(get_variables('image'));
+  //dpm(get_variables('text'));
+  switch($delta){
+    case 'about_us':
+      $about_us_text = variable_get('text_variable', '');
+      $block['content'] = theme('about_us_template', array('text' => $about_us_text));
+      break;
+  
+    case 'portfolio':
+      $portfolio_content = array(
+        'image' => get_variables('image'),
+        'text' => get_variables('text'),
+      );
+      //dpm($portfolio_content);
+      $block['content'] = theme('portfolio_template', array('portfolio' => $portfolio_content));
+      break;
+    case 'services':
+      $services_content = array(
+        'title' => array(
+          variable_get('services_title_1',''),
+	  variable_get('services_title_2',''),
+	  variable_get('services_title_3',''),
+	  variable_get('services_title_4',''),   
+        ),
+	'icon' => array(
+	  variable_get('services_icon_1',''),
+	  variable_get('services_icon_2',''),
+	  variable_get('services_icon_3',''),   
+	  variable_get('services_icon_4',''),
+	),
+	'desc' => array(
+          variable_get('services_desc_1',''),
+	  variable_get('services_desc_2',''),
+	  variable_get('services_desc_3',''),
+	  variable_get('services_desc_4',''), 
+	),
+      );
+      
+      $block['content'] = theme('services_template',array('services'=>$services_content));
+      break;
+    case 'contact_us':
+      $contact_us_content = array(
+        'header'=> variable_get('contact_us_heading'),
+        'number' => variable_get('contact_us_number'),
+        'message'=> variable_get('contact_us_message'),
+        'email' => variable_get('contact_us_email'),
+      );
+      $block['content'] = theme('contact_us_template', array('contact_us'=>$contact_us_content));
+      break;
+  }
+  dpm($block);
+  return $block;
+}
+
+function custom_blocks_block_save($delta = '', $edit = array()){
+
+  global $portfolio;
+
+  //dpm($edit); 
+  switch($delta){
+    case 'about_us':
+      // Saving the WYSIWYG text
+      variable_set('text_variable', $edit['text_body']['value']);
+      /*
+      // Saving the file, setting it to a permanent state, setting a FID variable
+      $file = file_load($edit['file']);
+      $file->status = FILE_STATUS_PERMANENT;
+      file_save($file);
+      $block = block_load('custom_blocks' , $delta);
+      file_usage_add($file, 'custom_blocks', 'block', $block->bid);
+      variable_set('block_image_fid', $file->fid);
+      */
+      break;
+
+    case 'portfolio' :
+      
+      $block = block_load('custom_blocks',$delta);
+      
+      $file = file_load($edit['portfolio_image_1']);
+      $file->status = FILE_STATUS_PERMANENT;
+      file_save($file);
+      file_usage_add($file, 'custom_blocks','block', $block->bid);
+      variable_set('portfolio_image_1_fid',$file->fid);
+      variable_set('portfolio_text_1', $edit['portfolio_text_1']);
+ 
+      $file = file_load($edit['portfolio_image_2']);
+      $file->status = FILE_STATUS_PERMANENT;
+      file_save($file);
+      file_usage_add($file, 'custom_blocks','block', $block->bid);
+      variable_set('portfolio_image_2_fid',$file->fid);
+      variable_set('portfolio_text_2', $edit['portfolio_text_2']);
+
+      $file = file_load($edit['portfolio_image_3']);
+      $file->status = FILE_STATUS_PERMANENT;
+      file_save($file);
+      file_usage_add($file, 'custom_blocks','block', $block->bid);
+      variable_set('portfolio_image_3_fid',$file->fid);
+      variable_set('portfolio_text_3', $edit['portfolio_text_3']);
+
+      $file = file_load($edit['portfolio_image_4']);
+      $file->status = FILE_STATUS_PERMANENT;
+      file_save($file);
+      file_usage_add($file, 'custom_blocks','block', $block->bid);
+      variable_set('portfolio_image_4_fid',$file->fid);
+      variable_set('portfolio_text_4', $edit['portfolio_text_4']);
+
+      $file = file_load($edit['portfolio_image_5']);
+      $file->status = FILE_STATUS_PERMANENT;
+      file_save($file);
+      file_usage_add($file, 'custom_blocks','block', $block->bid);
+      variable_set('portfolio_image_5_fid',$file->fid);
+      variable_set('portfolio_text_5', $edit['portfolio_text_5']);
+
+      $file = file_load($edit['portfolio_image_6']);
+      $file->status = FILE_STATUS_PERMANENT;
+      file_save($file);
+      file_usage_add($file, 'custom_blocks', 'block', $block->bid);
+      variable_set('portfolio_image_6_fid',$file->fid);
+      variable_set('portfolio_text_6', $edit['portfolio_text_6']);
+
+    case 'services':
+      // Saving the WYSIWYG text
+      variable_set('services_title_1', $edit['services_title_1']);
+      variable_set('services_icon_1', $edit['services_icon_1']);
+      variable_set('services_desc_1', $edit['services_desc_1']); 
+
+      variable_set('services_title_2', $edit['services_title_2']);
+      variable_set('services_icon_2', $edit['services_icon_2']);
+      variable_set('services_desc_2', $edit['services_desc_2']); 
+      
+      variable_set('services_title_3', $edit['services_title_3']);
+      variable_set('services_icon_3', $edit['services_icon_3']);
+      variable_set('services_desc_3', $edit['services_desc_3']); 
+      
+      variable_set('services_title_4', $edit['services_title_4']);
+      variable_set('services_icon_4', $edit['services_icon_4']);
+      variable_set('services_desc_4', $edit['services_desc_4']); 
+      
+      /*
+      foreach((array)$portfolio as $key => $value){
+        $file = file_load($edit[$key]);
+        $file->status = FILE_STATUS_PERMANENT;
+        file_save($file);
+        $block = block_load('custom_blocks', $delta);
+        file_usage_add($file, 'custom_blocks', 'block', $block->bid);
+        variable_set(,$file->fid);
+      }
+      */
+       break;
+    case 'contact_us':
+      variable_set('contact_us_heading', $edit['contact_us_heading']);
+      variable_set('contact_us_number', $edit['contact_us_number']);
+      variable_set('contact_us_message', $edit['contact_us_message']);
+      variable_set('contact_us_email', $edit['contact_us_email']);
+      break;
+  }
+
+}
+
+function custom_blocks_theme(){
+
+  return array(
+    'about_us_template' => array( 
+      'variables' => array('text' => NULL),
+      'template' => 'templates/about_us--block',
+    ),
+    'portfolio_template' => array(
+      'variables' => array('portfolio' => NULL),
+      'template' => 'templates/portfolio--block',
+    ),
+    'services_template' => array(
+      'variables' => array('services' => NULL),
+      'template' => 'templates/services--block',
+    ),
+    'contact_us_template' => array(
+      'variables' => array('contact_us' => NULL),
+      'template' => 'templates/contact-us--block',
+    ),
+
+  );
+
+}
+
+
+?>

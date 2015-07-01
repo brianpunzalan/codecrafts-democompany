@@ -1,0 +1,13 @@
+name		= Owl Theme Carousel
+description	= Module for carousel slider for Sponsors section
+package		= Custom
+version		= 7.1
+core		= 7.x
+
+
+stylesheets[all][] = css/owl.carousel.css
+stylesheets[all][] = css/owl.transitions.css
+stylesheets[all][] = css/owl.theme.css
+
+scripts[] = 'js/owl.carousel.js'
+scripts[] = 'js/custom.js'
